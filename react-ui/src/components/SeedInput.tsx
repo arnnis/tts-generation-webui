@@ -1,15 +1,11 @@
 import React from "react";
 import { HandleChange } from "../types/HandleChange";
-import { Switch } from "@/components/ui/switch";
-import { Label } from "@/components/ui/label";
-import { cn } from "../lib/utils";
-import { Input } from "./ui/input";
 
 export const SeedInput = <
   T extends {
     use_random_seed?: boolean;
     seed: number | string | undefined;
-  },
+  }
 >({
   params,
   handleChange,
@@ -19,32 +15,23 @@ export const SeedInput = <
   handleChange: HandleChange;
   className?: string;
 }) => (
-  <div className={cn("flex gap-2 items-center w-full", className)}>
-    <Label htmlFor="seed">Seed:</Label>
-    <Input
+  <div className={`flex gap-x-2 items-center w-full ${className}`}>
+    <label className="text-base">Seed:</label>
+    <input
       type="number"
       name="seed"
-      min={0}
-      // max={2 ** 32 - 1}
-      disabled={params.use_random_seed}
       value={params.seed}
       onChange={handleChange}
       maxLength={10}
-      className="text-right w-36"
+      className="border border-gray-300 p-2 rounded text-base w-36"
     />
-
-    <Switch
-      id="randomize"
+    <label className="text-base">Randomize seed:</label>
+    <input
+      type="checkbox"
+      name="use_random_seed"
       checked={params.use_random_seed}
-      onCheckedChange={(value) =>
-        handleChange({
-          target: {
-            name: "use_random_seed",
-            value,
-          },
-        })
-      }
+      onChange={handleChange}
+      className="border border-gray-300 p-2 rounded text-base"
     />
-    <Label htmlFor="randomize">Randomize</Label>
   </div>
 );

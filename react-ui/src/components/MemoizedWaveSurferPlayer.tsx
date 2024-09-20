@@ -45,8 +45,7 @@ const WaveSurferPlayerRaw = (props) => {
   // }, [volume]);
   return (
     <>
-      {/* <div ref={containerRef} style={{ minHeight: "120px" }} /> */}
-      <div ref={containerRef} className="h-28" />
+      <div ref={containerRef} style={{ minHeight: "120px" }} />
 
       {/* <button onClick={onPlayClick} style={{ marginTop: "1em" }}>
               {isPlaying ? "Pause" : "Play"}

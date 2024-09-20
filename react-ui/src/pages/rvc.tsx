@@ -4,7 +4,6 @@ import { Template } from "../components/Template";
 import { useRVCPage } from "../tabs/RVCParams";
 import { RVCInputs } from "../components/RVCInputs";
 import { GenerationHistorySimple } from "../components/GenerationHistory";
-import { Button } from "../components/ui/button";
 
 const RvcGenerationPage = () => {
   const {
@@ -18,24 +17,18 @@ const RvcGenerationPage = () => {
 
   return (
     <Template title="RVC">
-      <div className="flex w-full flex-col gap-4">
+      <div className="flex w-full flex-col">
         <RVCInputs
           rvcParams={rvcGenerationParams}
           handleChange={handleChange}
         />
-        <div className="flex flex-col gap-y-4">
-          {/* <button
-            className="cell hover:bg-gray-100"
+        <div className="flex flex-col space-y-4">
+          <button
+            className="border border-gray-300 p-2 rounded hover:bg-gray-100"
             onClick={() => consumer(rvcGenerationParams)}
           >
             Convert
-          </button> */}
-          <Button
-            variant="default"
-            onClick={() => consumer(rvcGenerationParams)}
-          >
-            Convert
-          </Button>
+          </button>
           <AudioOutput
             audioOutput={historyData[0]?.audio}
             label="RVC Output"

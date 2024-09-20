@@ -2,11 +2,12 @@ import React from "react";
 import { BarkGenerationParams } from "../tabs/BarkGenerationParams";
 import { BarkVoice } from "./BarkVoice";
 import { BurnInPrompt, BarkPrompt } from "./BarkPrompt";
+import { TextTemperature, WaveformTemperature } from "./BarkTemperatureSlider";
 import { NPZVoiceDropdown } from "./BarkOldGeneration";
 import { PromptType, ForEachSubsequentGeneration } from "./BarkRadios";
 import { SeedInput } from "./SeedInput";
 import { HandleChange } from "../types/HandleChange";
-import { ParameterSlider } from "./GenericSlider";
+import { GenericSlider } from "./GenericSlider";
 
 export const BarkInputs = ({
   barkGenerationParams,
@@ -15,9 +16,9 @@ export const BarkInputs = ({
   barkGenerationParams: BarkGenerationParams;
   handleChange: HandleChange;
 }) => (
-  <div className="flex flex-col gap-y-2 p-2">
+  <div className="flex flex-col gap-y-2">
     <div className="flex flex-row gap-x-2">
-      <div className="gap-y-2 flex flex-col">
+      <div className="gap-y-2 flex flex-col w-1/2">
         <NPZVoiceDropdown
           barkGenerationParams={barkGenerationParams}
           handleChange={handleChange}
@@ -35,53 +36,32 @@ export const BarkInputs = ({
           handleChange={handleChange}
         />
       </div>
-      <div className="flex flex-col gap-y-2">
-        <div className="grid grid-cols-1 gap-4">
-          <PromptType
+      <div className="gap-y-2 w-1/2">
+        <PromptType
+          barkGenerationParams={barkGenerationParams}
+          handleChange={handleChange}
+        />
+        <ForEachSubsequentGeneration
+          barkGenerationParams={barkGenerationParams}
+          handleChange={handleChange}
+        />
+        <div className="flex gap-2">
+          <TextTemperature
             barkGenerationParams={barkGenerationParams}
             handleChange={handleChange}
           />
-          <ForEachSubsequentGeneration
+          <WaveformTemperature
             barkGenerationParams={barkGenerationParams}
             handleChange={handleChange}
           />
-        </div>
-        <div className="grid grid-cols-3 cell gap-2 items-end">
-          <ParameterSlider
-            label="Text temperature"
-            name="text_temp"
-            min="0.0"
-            max="1.2"
-            step="0.01"
-            params={barkGenerationParams}
-            onChange={handleChange}
-            decimals={2}
-            orientation="vertical"
-            className="h-40"
-          />
-          <ParameterSlider
-            label="Waveform temperature"
-            name="waveform_temp"
-            min="0.0"
-            max="1.2"
-            step="0.01"
-            params={barkGenerationParams}
-            onChange={handleChange}
-            decimals={2}
-            orientation="vertical"
-            className="h-40"
-          />
-          <ParameterSlider
-            label="Max length (s)"
+          <GenericSlider
+            label="Max generation duration (s)"
             name="max_length"
             min="0.1"
             max="18"
             step="0.1"
             params={barkGenerationParams}
-            onChange={handleChange}
-            decimals={1}
-            orientation="vertical"
-            className="h-40"
+            handleChange={handleChange}
           />
         </div>
         <SeedInput params={barkGenerationParams} handleChange={handleChange} />

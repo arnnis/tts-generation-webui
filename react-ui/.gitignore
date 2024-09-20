@@ -40,5 +40,3 @@ next-env.d.ts
 # upload cache
 /public/file-input-cache/
 
-
-*storybook.log

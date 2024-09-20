@@ -162,8 +162,9 @@ def tortoise_core_ui():
         )
 
     with gr.Row():
-        for i in range(MAX_OUTPUTS):
-            generate_button(MAX_OUTPUTS - i)
+        total_columns = MAX_OUTPUTS
+        for i in range(total_columns):
+            generate_button(total_columns - i)
 
 
 if __name__ == "__main__":

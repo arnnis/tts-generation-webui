@@ -15,7 +15,10 @@ interface Props {
 
 export default function Voices({ outputs }: Props) {
   return (
-    <Template title="Voices">
+    <Template>
+      <Head>
+        <title>Favorites - TTS Generation Webui</title>
+      </Head>
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {outputs.map((npz) => (
           <CardVoiceNpz key={npz.filename} generation={npz} />
