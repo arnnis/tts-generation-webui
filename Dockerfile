@@ -34,7 +34,7 @@ RUN pip3 install --no-cache-dir --upgrade pip==23.3.2 setuptools && \
 WORKDIR /app
 
 # Clone the repo
-RUN git clone https://github.com/rsxdalv/tts-generation-webui.git
+RUN git clone https://github.com/arnnis/tts-generation-webui.git
 
 # Set working directory to the cloned repo
 WORKDIR /app/tts-generation-webui
